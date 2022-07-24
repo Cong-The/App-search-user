@@ -1,15 +1,10 @@
 class TheUser {
-  final String name,
-      // age,
-      address,
-      phone
-      // , interest
-      ;
+  final String name, age, address, phone, interest;
   TheUser({
     required this.name,
-    // required this.age,
+    required this.age,
     required this.address,
     required this.phone,
-    // required this.interest,
+    required this.interest,
   });
 }

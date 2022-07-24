@@ -58,15 +58,18 @@ class _BodyHomeState extends State<BodyHome> {
                       MaterialPageRoute(
                           builder: (context) => Detail(user: listuser[index])));
                 },
-                child: Column(
-                  children: [
-                    Text(listuser[index].name),
-                    Text(listuser[index].address),
-                    Text(listuser[index].phone),
-                    const SizedBox(
-                      height: 8,
-                    )
-                  ],
+                child: Center(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(listuser[index].name),
+                      Text(listuser[index].address),
+                      Text(listuser[index].phone),
+                      const SizedBox(
+                        height: 8,
+                      )
+                    ],
+                  ),
                 ),
               );
             })

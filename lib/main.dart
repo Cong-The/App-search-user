@@ -1,7 +1,7 @@
 import 'package:app_search_title/src/model/id_user.dart';
 import 'package:app_search_title/src/viewmodel/services/auth.dart';
 
-import 'package:app_search_title/src/warapper.dart';
+import 'package:app_search_title/src/app.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       value: AuthService().user,
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: Warapper(),
+        home: App(),
       ),
     );
   }

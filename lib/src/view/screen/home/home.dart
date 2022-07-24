@@ -14,6 +14,7 @@ class Home extends StatelessWidget {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
+        backgroundColor: Colors.brown[400],
         leading: IconButton(
           icon: const Icon(Icons.menu),
           onPressed: () {
@@ -61,9 +62,15 @@ class Home extends StatelessWidget {
 
   void _showUpdateProflie(BuildContext context) {
     showModalBottomSheet(
+        isScrollControlled: true,
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(25.0),
+                topRight: Radius.circular(25.0))),
         context: context,
         builder: (context) {
           return Container(
+            height: MediaQuery.of(context).size.height * 0.75,
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 60),
             child: const UpdateProflie(),
           );

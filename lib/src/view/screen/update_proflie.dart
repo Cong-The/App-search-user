@@ -61,7 +61,7 @@ class _UpdateProflieState extends State<UpdateProflie> {
                       height: 20,
                     ),
                     TextFormField(
-                      // initialValue: userData.age, // remove !
+                      initialValue: userData.age, // remove !
                       decoration: textInputDecoration,
                       keyboardType: TextInputType.number,
                       inputFormatters: <TextInputFormatter>[
@@ -121,7 +121,7 @@ class _UpdateProflieState extends State<UpdateProflie> {
                       height: 20,
                     ),
                     TextFormField(
-                      // initialValue: userData.interest, // remove !
+                      initialValue: userData.interest, // remove !
                       decoration: textInputDecoration,
                       validator: (String? value) {
                         return value!.isEmpty
@@ -150,10 +150,10 @@ class _UpdateProflieState extends State<UpdateProflie> {
                         if (formKey.currentState!.validate()) {
                           await DatabaseService(uid: user.uid).updateUserData(
                             _currentName ?? userData.name,
-                            // _currentAge ?? userData.age,
+                            _currentAge ?? userData.age,
                             _currentAddress ?? userData.address,
                             _currentPhone ?? userData.phone,
-                            // _currentInterest ?? userData.interest,
+                            _currentInterest ?? userData.interest,
                           );
                           Navigator.pop(context);
                         }

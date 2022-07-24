@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-class Warapper extends StatelessWidget {
-  const Warapper({Key? key}) : super(key: key);
+class App extends StatelessWidget {
+  const App({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

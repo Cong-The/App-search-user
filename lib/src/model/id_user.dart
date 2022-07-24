@@ -4,20 +4,14 @@ class IdUser {
 }
 
 class IdUserData {
-  final String uid,
-      //  age,
-      name,
-      address,
-      phone
-      // , interest
-      ;
+  final String uid, age, name, address, phone, interest;
 
   IdUserData({
     required this.uid,
-    // required this.age,
+    required this.age,
     required this.name,
     required this.address,
     required this.phone,
-    // required this.interest,
+    required this.interest,
   });
 }

@@ -11,19 +11,14 @@ class DatabaseService {
   final CollectionReference demoCollection =
       FirebaseFirestore.instance.collection('TheUser');
 
-  Future updateUserData(
-    String name,
-    //  String age,
-    String address,
-    String phone,
-    // String interest
-  ) async {
+  Future updateUserData(String name, String age, String address, String phone,
+      String interest) async {
     return await demoCollection.doc(uid).set({
       'name': name,
-      // 'age': age,
+      'age': age,
       'address': address,
       'phone': phone,
-      // 'interest': interest,
+      'interest': interest,
     });
   }
 
@@ -32,10 +27,10 @@ class DatabaseService {
     return IdUserData(
       uid: uid,
       name: snapshot.get('name'),
-      // age: snapshot.get('age'),
+      age: snapshot.get('age'),
       address: snapshot.get('address'),
       phone: snapshot.get('phone'),
-      // interest: snapshot.get('interest'),
+      interest: snapshot.get('interest'),
     );
   }
 
@@ -52,10 +47,10 @@ class DataList {
     return snapshot.docs.map((e) {
       return TheUser(
         name: e.get('name') ?? '',
-        // age: e.get('age') ?? '',
+        age: e.get('age') ?? '',
         address: e.get('address') ?? '',
         phone: e.get('phone') ?? '',
-        // interest: e.get('interest') ?? '',
+        interest: e.get('interest') ?? '',
       );
     }).toList();
   }
