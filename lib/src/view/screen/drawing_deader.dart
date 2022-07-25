@@ -21,21 +21,19 @@ class _DrawinngHeaderState extends State<DrawinngHeader> {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             IdUserData? customerData = snapshot.data;
-            return Container(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CircleAvatar(
-                    backgroundColor: Colors.white,
-                    radius: 50,
-                    child: Image.asset(
-                      'assets/images/person.png',
-                    ),
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CircleAvatar(
+                  backgroundColor: Colors.white,
+                  radius: 50,
+                  child: Image.asset(
+                    'assets/images/person.png',
                   ),
-                  Text(customerData!.name)
-                ],
-              ),
+                ),
+                Text(customerData!.name)
+              ],
             );
           } else {
             return const Loading();

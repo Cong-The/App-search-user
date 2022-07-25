@@ -44,121 +44,27 @@ class _UpdateProflieState extends State<UpdateProflie> {
                     const SizedBox(
                       height: 20,
                     ),
-                    TextFormField(
-                      initialValue: userData!.name,
-                      decoration: textInputDecoration,
-                      validator: (String? value) {
-                        return value!.isEmpty ? 'Please enter a name' : null;
-                        // return null;
-                      },
-                      onChanged: (value) {
-                        setState(() {
-                          _currentName = value;
-                        });
-                      },
-                    ),
+                    _textfieldName(userData!),
                     const SizedBox(
                       height: 20,
                     ),
-                    TextFormField(
-                      initialValue: userData.age, // remove !
-                      decoration: textInputDecoration,
-                      keyboardType: TextInputType.number,
-                      inputFormatters: <TextInputFormatter>[
-                        FilteringTextInputFormatter.digitsOnly
-                      ],
-                      validator: (String? value) {
-                        if (value!.isEmpty || int.parse(value) <= 0) {
-                          return 'Please enter a age';
-                        }
-                        return null;
-                      },
-                      onChanged: (value) {
-                        setState(() {
-                          _currentAge = value;
-                        });
-                      },
-                    ),
+                    _textfieldAge(userData),
                     const SizedBox(
                       height: 20,
                     ),
-                    TextFormField(
-                      initialValue: userData.address, // remove !
-                      decoration: textInputDecoration,
-                      validator: (String? value) {
-                        return value!.isEmpty ? 'Please enter a address' : null;
-                        // return null;
-                      },
-                      onChanged: (value) {
-                        setState(() {
-                          _currentAddress = value;
-                        });
-                      },
-                    ),
+                    _textfieldAddress(userData),
                     const SizedBox(
                       height: 20,
                     ),
-                    TextFormField(
-                      initialValue: userData.phone, // remove !
-                      decoration: textInputDecoration,
-                      keyboardType: TextInputType.number,
-                      inputFormatters: <TextInputFormatter>[
-                        FilteringTextInputFormatter.digitsOnly
-                      ],
-                      validator: (String? value) {
-                        if (value!.isEmpty || value.length != 10) {
-                          return 'Please enter a phone';
-                        }
-                        return null;
-                      },
-                      onChanged: (value) {
-                        setState(() {
-                          _currentPhone = value;
-                        });
-                      },
-                    ),
+                    _textfieldPhone(userData),
                     const SizedBox(
                       height: 20,
                     ),
-                    TextFormField(
-                      initialValue: userData.interest, // remove !
-                      decoration: textInputDecoration,
-                      validator: (String? value) {
-                        return value!.isEmpty
-                            ? 'Please enter a interest'
-                            : null;
-                        // return null;
-                      },
-                      onChanged: (value) {
-                        setState(() {
-                          _currentInterest = value;
-                        });
-                      },
-                    ),
+                    _textfieldInterest(userData),
                     const SizedBox(
                       height: 20,
                     ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.pink[400],
-                        onPrimary: Colors.white,
-                      ),
-                      child: const Text(
-                        'Update',
-                      ),
-                      onPressed: () async {
-                        if (formKey.currentState!.validate()) {
-                          await DatabaseService(uid: user.uid).updateUserData(
-                            _currentName ?? userData.name,
-                            _currentAge ?? userData.age,
-                            _currentAddress ?? userData.address,
-                            _currentPhone ?? userData.phone,
-                            _currentInterest ?? userData.interest,
-                          );
-                          Navigator.pop(context);
-                        }
-                      },
-                    )
+                    _buttonUpdate(userData, user),
                   ],
                 ),
               ),
@@ -167,5 +73,119 @@ class _UpdateProflieState extends State<UpdateProflie> {
             return const Loading();
           }
         });
+  }
+
+  Widget _textfieldName(IdUserData userData) {
+    return TextFormField(
+      initialValue: userData.name,
+      decoration: textInputDecoration,
+      validator: (String? value) {
+        return value!.isEmpty ? 'Please enter a name' : null;
+      },
+      onChanged: (value) {
+        setState(() {
+          _currentName = value;
+        });
+      },
+    );
+  }
+
+  Widget _textfieldAge(IdUserData userData) {
+    return TextFormField(
+      initialValue: userData.age,
+      decoration: textInputDecoration,
+      keyboardType: TextInputType.number,
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.digitsOnly
+      ],
+      validator: (String? value) {
+        if (value!.isEmpty || int.parse(value) <= 0) {
+          return 'Please enter a age';
+        }
+        return null;
+      },
+      onChanged: (value) {
+        setState(() {
+          _currentAge = value;
+        });
+      },
+    );
+  }
+
+  Widget _textfieldAddress(IdUserData userData) {
+    return TextFormField(
+      initialValue: userData.address,
+      decoration: textInputDecoration,
+      validator: (String? value) {
+        return value!.isEmpty ? 'Please enter a address' : null;
+      },
+      onChanged: (value) {
+        setState(() {
+          _currentAddress = value;
+        });
+      },
+    );
+  }
+
+  Widget _textfieldPhone(IdUserData userData) {
+    return TextFormField(
+      initialValue: userData.phone,
+      decoration: textInputDecoration,
+      keyboardType: TextInputType.number,
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.digitsOnly
+      ],
+      validator: (String? value) {
+        if (value!.isEmpty || value.length != 10) {
+          return 'Please enter a phone';
+        }
+        return null;
+      },
+      onChanged: (value) {
+        setState(() {
+          _currentPhone = value;
+        });
+      },
+    );
+  }
+
+  Widget _textfieldInterest(IdUserData userData) {
+    return TextFormField(
+      initialValue: userData.interest,
+      decoration: textInputDecoration,
+      validator: (String? value) {
+        return value!.isEmpty ? 'Please enter a interest' : null;
+        // return null;
+      },
+      onChanged: (value) {
+        setState(() {
+          _currentInterest = value;
+        });
+      },
+    );
+  }
+
+  Widget _buttonUpdate(IdUserData userData, IdUser user) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        primary: Colors.pink[400],
+        onPrimary: Colors.white,
+      ),
+      child: const Text(
+        'Update',
+      ),
+      onPressed: () {
+        if (formKey.currentState!.validate()) {
+          DatabaseService(uid: user.uid).updateUserData(
+            _currentName ?? userData.name,
+            _currentAge ?? userData.age,
+            _currentAddress ?? userData.address,
+            _currentPhone ?? userData.phone,
+            _currentInterest ?? userData.interest,
+          );
+          Navigator.pop(context);
+        }
+      },
+    );
   }
 }
